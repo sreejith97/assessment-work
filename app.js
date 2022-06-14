@@ -9,10 +9,10 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 
 const userRoute = require("./routes/user");
-const healthRoute = require("./routes/health");
-const userListRoute = require("./routes/userList");
-const responseRoute = require("./routes/response");
-const tokenRoute = require("./routes/token");
+// const healthRoute = require("./routes/health");
+// const userListRoute = require("./routes/userList");
+// const responseRoute = require("./routes/response");
+// const tokenRoute = require("./routes/token");
 const fetch = require("node-fetch");
 
 const mongoose = require("mongoose");
@@ -31,11 +31,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/users", usersRouter);
+// app.use("/users", usersRouter);
 app.use("/", userRoute);
-app.use("/health", healthRoute);
-app.use("/response", responseRoute);
-app.use("/token", tokenRoute);
+// app.use("/health", healthRoute);
+// app.use("/response", responseRoute);
+// app.use("/token", tokenRoute);
 app.use("/user", usersRouter);
 
 // catch 404 and forward to error handler
@@ -44,7 +44,7 @@ app.use(function (req, res, next) {
 });
 
 const dbUrl =
-  "mongodb+srv://admin:jjkfsGjjkQJ1cB0I@database.dx08k.mongodb.net/data?retryWrites=true&w=majority";
+  "mongodb+srv://admin:jjkfsGjjkQJ1cB0I@database.dx08k.mongodb.net/database?retryWrites=true&w=majority";
 
 const connectionParams = { useNewUrlParser: true, useUnifiedTopology: true };
 mongoose

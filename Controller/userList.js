@@ -6,7 +6,7 @@ exports.List_user = async (req, res) => {
     const userList = await User.find();
     console.log("Details", userList);
     res.status(200).json({
-      sucess: false,
+      sucess: true,
       data: userList,
       data2: "hello",
     });
@@ -18,6 +18,7 @@ exports.List_user = async (req, res) => {
 exports.addUser = async (req, res) => {
   try {
     const newUser = new User({
+      user_id: req.body.user_id,
       user_name: req.body.user_name,
       email: req.body.email,
       created_at: req.body.created_at,
@@ -27,5 +28,16 @@ exports.addUser = async (req, res) => {
     res.status(200).json({ sucess: true });
   } catch (err) {
     res.status(500).json({ sucess: false, err });
+  }
+};
+
+exports.editUser = async (req, res) => {
+  try {
+    const user_id = req.params.id;
+    const update = req.body;
+    const result = await User.findByIdAndUpdate(user_id, update);
+    res.send(result);
+  } catch (error) {
+    res.status(500).json({ sucess: false, error });
   }
 };
