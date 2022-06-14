@@ -21,8 +21,6 @@ exports.addUser = async (req, res) => {
       user_id: req.body.user_id,
       user_name: req.body.user_name,
       email: req.body.email,
-      created_at: req.body.created_at,
-      edit_at: req.body.edit_at,
     });
     const user = await newUser.save();
     res.status(200).json({ sucess: true });

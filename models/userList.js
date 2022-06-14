@@ -12,14 +12,9 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  created_at: {
-    type: String,
-    required: true,
-  },
-  edit_at: {
-    type: String,
-    required: true,
-  },
+
+  created_at: { type: Date, default: Date.now },
+  edited_at: { type: Date, default: Date.now },
 });
 
 const UserModel = mongoose.model("user_list", userSchema);
